@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# YouTube RAG System - Environment Configuration (Sample)
+# 環境固有の設定を管理するファイル
+# このファイルをenv_config.shにコピーして環境に合わせて設定してください
+
+# プロジェクトディレクトリ (スクリプトの場所から自動取得)
+PROJECT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+BACKEND_DIR="$PROJECT_DIR"
+FRONTEND_DIR="$PROJECT_DIR/frontend"
+
+# Python環境設定
+CONDA_ENV="your-conda-env-name"  # 使用するconda環境名を設定
+PYTHON_CMD="python"  # または python3
+
+# サーバーポート設定
+BACKEND_PORT=8000
+FRONTEND_PORT=3001
+
+# ログ設定
+LOG_DIR="$PROJECT_DIR/logs"
+BACKEND_LOG="$LOG_DIR/backend.log"
+FRONTEND_LOG="$LOG_DIR/frontend.log"
+
+# PIDファイル設定
+PID_DIR="/tmp"
+BACKEND_PID_FILE="$PID_DIR/youtube_rag_backend.pid"
+FRONTEND_PID_FILE="$PID_DIR/youtube_rag_frontend.pid"
+
+# 環境変数の設定
+export PYTHONIOENCODING='utf-8'

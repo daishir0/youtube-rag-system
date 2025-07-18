@@ -1,0 +1,104 @@
+# YouTube RAG System Configuration (Sample)
+# このファイルをconfig.yamlにコピーして設定を行ってください
+
+# 一般設定
+general:
+  debug: false
+  max_workers: 4
+  verbosity: 2
+  environment: development  # development, production
+
+# ログ設定
+logging:
+  level: INFO
+  file: ./logs/app.log
+  format: '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+  max_size_mb: 10
+  backup_count: 5
+
+# OpenAI API設定
+openai:
+  api_key: "your-openai-api-key-here"  # OpenAI APIキーを設定してください
+  model: gpt-4o-mini
+  temperature: 0.3
+  max_tokens: 2000
+  max_retries: 3
+
+# YouTube設定
+youtube:
+  # 字幕言語設定
+  subtitle_languages:
+    - ja
+    - en
+  subtitle_fallback_languages:
+    - ja
+    - en
+  subtitle_sleep_interval: 5
+  subtitle_max_retries: 3
+  subtitle_429_retry_sleep: 30
+  
+  # ダウンロード設定
+  sleep_interval: 2
+  max_sleep: 5
+  random_sleep: true
+  subtitle_max_retries: 3
+  subtitle_sleep_interval: 5
+  subtitle_429_retry_sleep: 30
+  user_agent: "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+
+# データストレージ設定
+storage:
+  # 字幕データ保存ディレクトリ
+  transcripts_dir: ./data/transcripts
+  # ベクターストア保存ディレクトリ
+  vectorstore_dir: ./data/vectorstore
+  # 処理済みURL管理ファイル
+  processed_urls_file: ./data/processed_urls.json
+  # 動画メタデータ保存ディレクトリ
+  metadata_dir: ./data/metadata
+
+# RAG設定
+rag:
+  # テキスト分割設定
+  chunk_size: 1000
+  chunk_overlap: 200
+  
+  # 埋め込み設定
+  embedding_model: text-embedding-ada-002
+  
+  # 検索設定
+  retrieval_k: 5
+  similarity_threshold: 0.7
+  
+  # LLM設定
+  llm_model: gpt-4o-mini
+  llm_temperature: 0.1
+
+# FastAPI設定
+fastapi:
+  host: 0.0.0.0
+  port: 8000
+  reload: true
+  log_level: info
+  cors_origins:
+    - "http://localhost:3000"
+    - "http://127.0.0.1:3000"
+    - "http://localhost:3001"
+    - "http://127.0.0.1:3001"
+
+# キャラクター設定
+character:
+  name: "らぐちゃん"
+  personality: "friendly"
+  tone: "casual"
+  ending_phrase: "～のようです"
+  emoji: "🐾"
+  greeting: "こんにちは！動画の内容について調べてみました"
+  no_results: "ごめんなさい、関連する情報が見つかりませんでした"
+
+# プロキシ設定
+proxy:
+  enabled: false
+  host: 127.0.0.1
+  port: 1080
+  type: socks5
