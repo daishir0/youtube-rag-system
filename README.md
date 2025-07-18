@@ -1,5 +1,7 @@
 # youtube-rag-system
 
+![sample page](sample.png)
+
 ## Overview
 YouTube RAG System is an intelligent video content analysis and Q&A system that downloads YouTube video subtitles, processes them using AI embeddings, and provides interactive question-answering capabilities. The system features a FastAPI backend with vector search capabilities and a modern Next.js frontend for seamless user interaction.
 
